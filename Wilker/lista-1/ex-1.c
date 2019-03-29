@@ -45,21 +45,19 @@ int max_seg(int *vet, int ant){
 
 int max_seg(int *vet, int n){
     int i = 0;
-    int maior = 0;
-    int atual = 0;
+    int maior = 1;
+    int atual = 1;
     for(i = 0; i < n-1; i++){
-        if(vet[n+1] > vet[n]){
+        if(vet[i+1] > vet[i]){
             atual++;
             if(maior<atual){
                 maior = atual;
-                atual = 0;
             }
         }else{
-            if(vet[n+1] > vet[n]){
-                atual = 0;
-            }
+            atual = 1;
         }
     }
+    return maior;
 }
 
 
