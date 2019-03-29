@@ -7,17 +7,17 @@ int max (int a, int b);
 
 int main(int argc, char *argv[]){
     int n = 0;
-    do{
-        scanf("%d",&n);
+    scanf("%d",&n);
+        while (n>0){
         int *numeros = (int*)malloc(sizeof(int)*n);
         int i =0;
         for(i = 0; i < n; i++){
             scanf("%d",&numeros[i]); 
         }
-        //imprime(numeros,n);
         printf("Máximo segumentos => %d \n",max_seg(numeros,n));
+        scanf("%d",&n);
     }
-    while (n>0);
+
     return 0;
 }
 
