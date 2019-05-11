@@ -30,7 +30,7 @@ int main(void) {
 
   printf("\nLista Original:\n");
   imprime(l);   
-  p= copia(l); 
+  p=copia(l); 
   printf("\nLista p:\n");
   imprime(p);  
   return 0;
@@ -42,6 +42,7 @@ TAluno *copia (TAluno* l) {
   p->mat=l->mat;
   p->cr=l->cr;
   p->prox=copia(l->prox);
+  return p;
 }
 
 
