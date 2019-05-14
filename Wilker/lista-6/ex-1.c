@@ -159,6 +159,8 @@ TP *f2p(TF *f){
     while(!fila_vazia(f2)){
         insere(f,retira(f2));
     }
+    libera_pilha(p);
+    libera_fila(f2);
     return q;    
 }
 
