@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 // ==========================================
@@ -38,6 +37,7 @@ void libera_fila(TF *f) {
 TF* insere(TF *f, int x) {
   TNO *n = (TNO*) malloc(sizeof(TNO));
   n->info = x;
+  n->prox = NULL;
   if(fila_vazia(f)) {
     f->ini = n;
     f->fim = n;
@@ -152,23 +152,25 @@ TP *f2p(TF *f){
         push(p,x);
         f2=insere(f2,x);
     }
-    f=f2;
     while(!pilha_vazia(p)){
         int x = pop(p);
         push(q,x);
+    }
+    while(!fila_vazia(f2)){
+        insere(f,retira(f2));
     }
     return q;    
 }
 
 
 int main(int argc, char const *argv[]) {
-	TF *f = inicializa_fila();
-	insere(f, 2);
-	insere(f, 3);
-	insere(f, 5);
-	insere(f, 7);
-	insere(f, 11);
-	insere(f, 13);
+    TF *f = inicializa_fila();
+    insere(f, 2);
+    insere(f, 3);
+    insere(f, 5);
+    insere(f, 7);
+    insere(f, 11);
+    insere(f, 13);
 
     TP *p = inicializa_pilha();
 
@@ -180,17 +182,13 @@ int main(int argc, char const *argv[]) {
     // push(p,13);
 
 	
-
-	imprime_fila(f);	
-    imprime_pilha(p);
-
     p = f2p(f);
 
-    imprime_fila(f);	
+    imprime_fila(f);		
     imprime_pilha(p);
 
-	libera_fila(f);
-	libera_pilha(p);
+    libera_fila(f);
+    libera_pilha(p);
 
-	return 0;
+    return 0;
 }
